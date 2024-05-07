@@ -88,8 +88,10 @@ public abstract class Reunion {
     }
 
     public float calcularTiempoReal() {
+        float tiempoReal;
         // TODO this
 
+        return tiempoReal;
     }
 
     public void iniciar() {
@@ -98,7 +100,7 @@ public abstract class Reunion {
     }
 
     public void finalizar() {
-        
+
 
     }
 
