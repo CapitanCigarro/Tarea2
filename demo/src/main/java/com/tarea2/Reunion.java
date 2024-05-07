@@ -104,6 +104,17 @@ public abstract class Reunion {
 
     }
 
+    @Override
+    public String toString() {
+        String toString = "Reunion [fecha=" + fecha + ", horaPrevista=" + horaPrevista + ", duracionPrevista=" + duracionPrevista
+                + ", horaInicio=" + horaInicio + ", horaFin=" + horaFin + ", listaAsistencias= {" + listaAsistencias
+                + ", listaAusencias=" + listaAusencias + ", listaRetrasos=" + listaRetrasos + "]";
+        // TODO finish this
+
+        return toString;
+
+    }
+
 
     
 }
