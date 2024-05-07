@@ -3,6 +3,14 @@ package com.tarea2;
 public class Empleados implements Invitable{
     private String id, apellidos, nombre, correo;
 
+    /**
+     * 
+     * @param id String Id del empleado
+     * @param apellidos String Apellido del empleado
+     * @param nombre String Nombre del empleado
+     * @param correo String Correo del empleado
+     */
+
     public Empleados(String id, String apellidos, String nombre, String correo) {
         this.id = id;
         this.apellidos = apellidos;
@@ -42,6 +50,10 @@ public class Empleados implements Invitable{
     public void setCorreo(String correo) {
         this.correo = correo;
     }
+
+    /**
+     * @param r Reunion a la que se invita empleado
+     */
 
     @Override
     public void invitar(Reunion r) { //temp

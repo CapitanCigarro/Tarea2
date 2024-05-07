@@ -20,7 +20,13 @@ public class ReunionPresencial extends Reunion {
     public void setSala(String sala) {
         this.sala = sala;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "ReunionPresencial  [fecha=" + super.getFecha() + ", horaPrevista=" + super.getHoraPrevista() + ", duracionPrevista=" + super.getDuracionPrevista()
+                + ", horaInicio=" + super.getHoraInicio() + ", horaFin=" + super.getHoraFin() + ", listaAsistencias=" + super.getListaAsistencias()
+                + ", listaAusencias=" + listaAusencias + ", listaRetrasos=" + listaRetrasos + "sala=" + sala + "]";
+        // TODO finish this
+    }
+
 }

@@ -3,6 +3,10 @@ package com.tarea2;
 public class Nota {
     private String contenido;
 
+    /**
+     * @param contenido String Contenido de la nota
+     */
+
     public Nota(String contenido) {
         this.contenido = contenido;
     }
