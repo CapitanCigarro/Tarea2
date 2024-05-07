@@ -9,7 +9,7 @@ public abstract class Reunion {
     private Instant horaPrevista;
     private Duration duracionPrevista;
     private Instant horaInicio, horaFin;
-    private ArrayList<Empleados> listaAsistencias, listaAusencias, listaRetrasos;
+    private ArrayList<Empleados> listaAsistencias, listaAusencias, listaRetrasos, listaInvitados;
 
     public Reunion(Date fecha, Instant horaPrevista, Duration duracionPrevista, Instant horaInicio, Instant horaFin) {
         this.fecha = fecha;
@@ -77,6 +77,11 @@ public abstract class Reunion {
 
     }
 
+    public ArrayList<Empleados> obtenerInvitados() {
+        return listaInvitados;
+
+    }
+
     public int obtenerTotalAsisencias () {
         return listaAsistencias.size();
 
@@ -90,6 +95,10 @@ public abstract class Reunion {
     public float calcularTiempoReal() {
         // TODO this
 
+    }
+
+    public void agregarInvitado(Empleados invitado){
+        listaInvitados.add(invitado);
     }
 
     public void iniciar() {

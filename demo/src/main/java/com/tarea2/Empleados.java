@@ -44,9 +44,8 @@ public class Empleados implements Invitable{
     }
 
     @Override
-    public void invitar() {
-        // TODO Auto-generated method stub
-        
+    public void invitar(Reunion r) { //temp
+        r.agregarInvitado(this);
     }
 
     @Override
