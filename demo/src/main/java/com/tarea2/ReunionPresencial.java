@@ -9,7 +9,7 @@ public class ReunionPresencial extends Reunion {
 
     public ReunionPresencial(Date fecha, Instant horaPrevista, Duration duracionPrevista, Instant horaInicio,
             Instant horaFin, String sala) {
-        super(fecha, horaPrevista, duracionPrevista, horaInicio, horaFin);
+        super(fecha, horaPrevista, duracionPrevista);
         this.sala = sala;
     }
 
@@ -23,10 +23,7 @@ public class ReunionPresencial extends Reunion {
 
     @Override
     public String toString() {
-        return "ReunionPresencial  [fecha=" + super.getFecha() + ", horaPrevista=" + super.getHoraPrevista() + ", duracionPrevista=" + super.getDuracionPrevista()
-                + ", horaInicio=" + super.getHoraInicio() + ", horaFin=" + super.getHoraFin() + ", listaAsistencias=" + super.getListaAsistencias()
-                + ", listaAusencias=" + listaAusencias + ", listaRetrasos=" + listaRetrasos + "sala=" + sala + "]";
-        // TODO finish this
+        return "ReunionPresencial = [" + super.toString() +", sala=" + sala.toString() + "]";
     }
 
 }

@@ -12,13 +12,13 @@ public abstract class Reunion {
     private ArrayList<Empleados> listaInvitados;
     private Asistencia listaAsistencia;
     private Retraso listaRetraso;
+    private Invitacion invitacion;
 
-    public Reunion(Date fecha, Instant horaPrevista, Duration duracionPrevista, Instant horaInicio, Instant horaFin) {
+    public Reunion(Date fecha, Instant horaPrevista, Duration duracionPrevista) {
         this.fecha = fecha;
         this.horaPrevista = horaPrevista;
         this.duracionPrevista = duracionPrevista;
-        this.horaInicio = horaInicio;
-        this.horaFin = horaFin;
+        invitacion = new Invitacion(horaPrevista);
         listaAsistencia = new Asistencia();
         listaRetraso = new Retraso();
         listaInvitados = new ArrayList<>();
@@ -100,13 +100,29 @@ public abstract class Reunion {
         listaInvitados.add(invitado);
     }
 
-    public void iniciar() {
-
+    public void iniciar(Instant hora) {
+        this.setHoraInicio(hora);
 
     }
 
-    public void finalizar() {
+    public void finalizar(Instant horaFin) {
+        if (horaInicio != null) {
+            this.setHoraFin(horaFin);
 
+        } else {
+            System.out.println("Reunion no iniciada");
+
+        } 
+        
+    }
+
+    public void agregarAsistencia(Empleados empleado) {
+        listaAsistencia.añadirEmpleado(empleado);
+
+    }
+
+    public void agregarRetraso(Empleados empleado) {
+        listaRetraso.añadirEmpleado(empleado);
 
     }
 
@@ -114,19 +130,9 @@ public abstract class Reunion {
     public String toString() {
         String toString = "Reunion [fecha=" + fecha.toString() + ", horaPrevista=" + horaPrevista.toString() + ", duracionPrevista=" + duracionPrevista.toString()
                 + ", horaInicio=" + horaInicio.toString() + ", horaFin=" + horaFin.toString()
-                + ", listaRetraso={";
-                for (int i = 0; i < listaRetraso.cantidad(); i++) {
-                    toString += listaRetraso.obtener(i).toString();
-                }
+                + listaRetraso.toString() + listaAsistencia.toString();
 
-                toString +="}, listaAsistencias= {";
-
-                for (int i = 0; i < listaAsistencia.cantidad(); i++) {
-                    toString += listaAsistencia.obtener(i).toString();
-
-                }
-
-                toString += "}, listaInvitados= {";
+                toString += "}, listaInvitados= [{";
 
                 for (int i = 0; i < listaInvitados.size(); i++) {
                     toString += listaInvitados.get(i).toString();
@@ -134,7 +140,6 @@ public abstract class Reunion {
                 }
 
                 toString += "}]";
-        // TODO finish this 
 
         return toString;
 

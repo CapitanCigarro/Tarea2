@@ -1,5 +1,7 @@
 package com.tarea2;
 
+import java.time.*;
+
 public class Empleados implements Invitable{
     private String id, apellidos, nombre, correo;
 
@@ -58,6 +60,19 @@ public class Empleados implements Invitable{
     @Override
     public void invitar(Reunion r) { //temp
         r.agregarInvitado(this);
+
+    }
+
+    public void asistir (Reunion r, Instant hora) {
+        if(r.getHoraInicio().compareTo(hora) > 0) {
+            r.agregarAsistencia(this);
+
+        } else {
+            r.agregarAsistencia(this);
+            r.agregarRetraso(this);
+
+        }
+
     }
 
     @Override
