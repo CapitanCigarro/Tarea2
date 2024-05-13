@@ -5,5 +5,20 @@ public class Retraso extends Asistencia {
         super();
 
     }
+
+    @Override
+    public String toString() {
+        String toString = "Retraso [";
+        for (int i = 0; i < super.cantidad(); i++) {
+            toString += super.obtener(i).toString();
+            
+        }
+
+        toString += "]";
+
+        return toString;
+    }
+
+    
     
 }

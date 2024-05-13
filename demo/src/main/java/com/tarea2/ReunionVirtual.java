@@ -21,5 +21,9 @@ public class ReunionVirtual extends Reunion {
         this.enlace = enlace;
     }
 
-    // TODO toString
+    @Override
+    public String toString() {
+        return "ReunionPresencial = [" + super.toString() +", sala=" + enlace.toString() + "]";
+    }
+
 }
