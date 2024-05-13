@@ -20,4 +20,24 @@ public class Asistencia{
 
     }
 
+    public Empleados obtener(int i) {
+        return listaAsistencia.get(i);
+
+    }
+
+    @Override
+    public String toString() {
+        String toString = "Asistencia [listaAsistencia=";
+
+                for (int i = 0; i < listaAsistencia.size(); i++) {
+                    toString += listaAsistencia.get(i).toString();
+
+                }
+        toString += "]";
+
+        return toString;
+    }
+
+    
+
 }

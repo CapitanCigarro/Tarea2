@@ -9,7 +9,9 @@ public abstract class Reunion {
     private Instant horaPrevista;
     private Duration duracionPrevista;
     private Instant horaInicio, horaFin;
-    private ArrayList<Empleados> listaAsistencias, listaAusencias, listaRetrasos, listaInvitados;
+    private ArrayList<Empleados> listaInvitados;
+    private Asistencia listaAsistencia;
+    private Retraso listaRetraso;
 
     public Reunion(Date fecha, Instant horaPrevista, Duration duracionPrevista, Instant horaInicio, Instant horaFin) {
         this.fecha = fecha;
@@ -17,6 +19,9 @@ public abstract class Reunion {
         this.duracionPrevista = duracionPrevista;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
+        listaAsistencia = new Asistencia();
+        listaRetraso = new Retraso();
+        listaInvitados = new ArrayList<>();
     }
 
     public Date getFecha() {
@@ -59,21 +64,13 @@ public abstract class Reunion {
         this.horaFin = horaFin;
     }
 
-    public ArrayList<Empleados> obtenerAsistencias() {
-        // TODO this
-        return listaAsistencias;
+    public Asistencia obtenerAsistencias() {
+        return listaAsistencia;
 
     }
 
-    public ArrayList<Empleados> obtenerAusencias() {
-        // TODO this
-
-        return listaAusencias;
-
-    }
-
-    public ArrayList<Empleados> obtenerRetrasos () {
-        return listaRetrasos;
+    public Retraso obtenerRetraso() {
+        return listaRetraso;
 
     }
 
@@ -83,19 +80,19 @@ public abstract class Reunion {
     }
 
     public int obtenerTotalAsisencias () {
-        return listaAsistencias.size();
+        return listaAsistencia.cantidad();
 
     }
 
     public float obtenerPorcentajeAsistencias () {
-        return listaAsistencias.size() / (listaAsistencias.size() + listaAusencias.size());
+        return listaAsistencia.cantidad() / listaInvitados.size();
 
     }
 
     public float calcularTiempoReal() {
         float tiempoReal;
-        // TODO this
-
+        tiempoReal = horaInicio.compareTo(horaFin);
+        // TODO test this
         return tiempoReal;
     }
 
@@ -115,10 +112,29 @@ public abstract class Reunion {
 
     @Override
     public String toString() {
-        String toString = "Reunion [fecha=" + fecha + ", horaPrevista=" + horaPrevista + ", duracionPrevista=" + duracionPrevista
-                + ", horaInicio=" + horaInicio + ", horaFin=" + horaFin + ", listaAsistencias= {" + listaAsistencias
-                + ", listaAusencias=" + listaAusencias + ", listaRetrasos=" + listaRetrasos + "]";
-        // TODO finish this
+        String toString = "Reunion [fecha=" + fecha.toString() + ", horaPrevista=" + horaPrevista.toString() + ", duracionPrevista=" + duracionPrevista.toString()
+                + ", horaInicio=" + horaInicio.toString() + ", horaFin=" + horaFin.toString()
+                + ", listaRetraso={";
+                for (int i = 0; i < listaRetraso.cantidad(); i++) {
+                    toString += listaRetraso.obtener(i).toString();
+                }
+
+                toString +="}, listaAsistencias= {";
+
+                for (int i = 0; i < listaAsistencia.cantidad(); i++) {
+                    toString += listaAsistencia.obtener(i).toString();
+
+                }
+
+                toString += "}, listaInvitados= {";
+
+                for (int i = 0; i < listaInvitados.size(); i++) {
+                    toString += listaInvitados.get(i).toString();
+
+                }
+
+                toString += "}]";
+        // TODO finish this 
 
         return toString;
 

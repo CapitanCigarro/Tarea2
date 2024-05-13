@@ -29,7 +29,17 @@ public class Departamento implements Invitable {
 
     @Override
     public String toString() {
-        return "Departamento [nombre=" + nombre + "]";
+        String toString = "Departamento [nombre=" + nombre;
+        toString += "}, listaInvitados= [{";
+
+        for (int i = 0; i < listaEmpleados.size(); i++) {
+            toString += listaEmpleados.get(i).toString();
+
+        }
+
+        toString += "}]";
+        
+        return toString;
     }
 
     public int obtenerCantidadEmpleados() {
