@@ -1,4 +1,8 @@
 package com.tarea2;
+/** Clase empleados, organiza una reunion para invitar a otros empleados
+ * @author Benjamin Molina
+ * @author Nícholas García
+ */
 
 import java.time.*;
 

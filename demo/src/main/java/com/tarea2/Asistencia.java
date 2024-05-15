@@ -1,4 +1,8 @@
 package com.tarea2;
+/** Arraylist que contiene empleados que se encuentran asistiendo a la reunion
+ * @author Benjamin Molina
+ * @author Nícholas García
+ */
 
 import java.util.ArrayList;
 
@@ -37,7 +41,5 @@ public class Asistencia{
 
         return toString;
     }
-
-    
 
 }

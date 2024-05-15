@@ -1,19 +1,18 @@
 package com.tarea2;
 
-import java.util.ArrayList;
-
 public class Main {
     public static void main(String[] args) {
         Empleados a = new Empleados("1", "null", "null", "null"), b = new Empleados("2", "null", "null", "null");
         Empleados c = new Empleados("null","null", "null", "null");
-        ArrayList<Empleados> lE = new ArrayList<Empleados>();
-        lE.add(a);
-        lE.add(b);
-        Departamento dep = new Departamento("dep", lE);
+        Departamento dep = new Departamento("dep");
         
         ReunionPresencial reunion = new ReunionPresencial(null, null, null, null, null, null);
-
+        dep.añadirEmpleado(a);
+        dep.añadirEmpleado(b);
         dep.invitar(reunion);
+        c.invitar(reunion);
+
+        a.asistir(reunion, null);
 
         System.out.println();
     }

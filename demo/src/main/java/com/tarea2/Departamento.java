@@ -1,4 +1,8 @@
 package com.tarea2;
+/** Departamento que contiene empleados
+ * @author Benjamin Molina
+ * @author Nícholas García
+ */
 
 import java.util.ArrayList;
 
@@ -6,9 +10,9 @@ public class Departamento implements Invitable {
     private String nombre;
     private ArrayList<Empleados> listaEmpleados;
 
-    public Departamento(String nombre, ArrayList<Empleados> listaEmpleados) {
+    public Departamento(String nombre) {
         this.nombre = nombre;
-        this.listaEmpleados = listaEmpleados;
+        this.listaEmpleados = new ArrayList<Empleados>();
     }
 
     public String getNombre() {
@@ -44,6 +48,11 @@ public class Departamento implements Invitable {
 
     public int obtenerCantidadEmpleados() {
         return listaEmpleados.size();
+
+    }
+
+    public void añadirEmpleado(Empleados e) {
+        listaEmpleados.add(e);
 
     }
 

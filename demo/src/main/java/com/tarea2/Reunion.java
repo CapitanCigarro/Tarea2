@@ -13,12 +13,16 @@ public abstract class Reunion {
     public ArrayList<Empleados> listaAusencias;
     private Asistencia listaAsistencia;
     private Retraso listaRetraso;
+    private ArrayList<Instant> listaHoraRetraso;
     private Invitacion invitacion;
+    private TipoReunion tipoReunion;
+    private ArrayList<Nota> listaNotas;
 
-    public Reunion(Date fecha, Instant horaPrevista, Duration duracionPrevista) {
+    public Reunion(Date fecha, Instant horaPrevista, Duration duracionPrevista, TipoReunion tipoReunion) {
         this.fecha = fecha;
         this.horaPrevista = horaPrevista;
         this.duracionPrevista = duracionPrevista;
+        this.tipoReunion = tipoReunion;
         invitacion = new Invitacion(horaPrevista);
         listaAsistencia = new Asistencia();
         listaRetraso = new Retraso();
@@ -86,6 +90,11 @@ public abstract class Reunion {
 
     }
 
+    public ArrayList<Nota> obtenerListaNotas() {
+        return listaNotas;
+
+    }
+
     public int obtenerTotalAsisencias () {
         return listaAsistencia.cantidad();
 
@@ -96,6 +105,31 @@ public abstract class Reunion {
 
     }
 
+    /**
+     * @param nota Nota nota a ser añadida
+     */
+
+    public void añadirNota(Nota nota) {
+        listaNotas.add(nota);
+
+    }
+
+    /**
+     * 
+     * @return ArrayList<Instant> Lista con las horas de llegada de empleados atrasados, hora en la i posicion corresponde al empleado en la posicion i
+     *                            de la lista de atrasos
+     */
+
+    public ArrayList<Instant> obtenerHoraRetrasos() {
+        return listaHoraRetraso;
+
+    }
+
+    /**
+     * 
+     * @return float tiempo que duro la reunion
+     */
+
     public float calcularTiempoReal() {
         float tiempoReal;
         tiempoReal = horaInicio.compareTo(horaFin);
@@ -103,9 +137,20 @@ public abstract class Reunion {
         return tiempoReal;
     }
 
+    /**
+     * 
+     * @param invitado Empleados empleado que se invita a la reunion, se agrega a lista de invitados
+     */
+
     public void agregarInvitado(Empleados invitado){
         listaInvitados.add(invitado);
     }
+
+    /**
+     * 
+     * @param hora Instant hora a la que se inicia la reunion
+     * Funcion para darle inicio a la reunion y asignarle la hora a la que se inicio
+     */
 
     public void iniciar(Instant hora) {
         this.setHoraInicio(hora);
@@ -129,6 +174,11 @@ public abstract class Reunion {
 
     }
 
+    /**
+     * @param horaFin Instant hora a la que se termina la reunion
+     * Funcion para asignar hora de termino de reunion
+     */
+
     public void finalizar(Instant horaFin) {
         if (horaInicio != null) {
             this.setHoraFin(horaFin);
@@ -139,6 +189,11 @@ public abstract class Reunion {
         } 
         
     }
+
+    /**
+     * @param empleado Empleados empleado que se añade a la asistencia
+     * Si el empleado se encuentra en lista de ausencia, este se quita de esta
+     */
 
     public void agregarAsistencia(Empleados empleado) {
         listaAsistencia.añadirEmpleado(empleado);
@@ -152,8 +207,14 @@ public abstract class Reunion {
 
     }
 
-    public void agregarRetraso(Empleados empleado) {
+    /**
+     * @param empleado Empleados empleado que se añadira a la lista de retraso
+     * @param hora Instant hora de llegada del empleado
+     */
+
+    public void agregarRetraso(Empleados empleado, Instant hora) {
         listaRetraso.añadirEmpleado(empleado);
+        listaHoraRetraso.add(hora);
 
     }
 
