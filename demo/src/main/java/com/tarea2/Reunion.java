@@ -142,6 +142,13 @@ public abstract class Reunion {
 
     public void agregarAsistencia(Empleados empleado) {
         listaAsistencia.añadirEmpleado(empleado);
+        for (int i = 0; i < listaAusencias.size(); i++) {
+            if (listaAusencias.get(i) == empleado) {
+                listaAusencias.remove(i);
+
+            }
+            
+        }
 
     }
 
