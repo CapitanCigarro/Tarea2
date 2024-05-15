@@ -11,9 +11,9 @@ public class Main {
         lE.add(b);
         Departamento dep = new Departamento("dep", lE);
         
-        ReunionPresencial reunion = new ReunionPresencial(null, null, null, null, null, null)
+        ReunionPresencial reunion = new ReunionPresencial(null, null, null, null, null, null);
 
-
+        dep.invitar(reunion);
 
         System.out.println();
     }

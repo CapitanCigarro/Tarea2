@@ -10,6 +10,7 @@ public abstract class Reunion {
     private Duration duracionPrevista;
     private Instant horaInicio, horaFin;
     private ArrayList<Empleados> listaInvitados;
+    public ArrayList<Empleados> listaAusencias;
     private Asistencia listaAsistencia;
     private Retraso listaRetraso;
     private Invitacion invitacion;
@@ -21,7 +22,8 @@ public abstract class Reunion {
         invitacion = new Invitacion(horaPrevista);
         listaAsistencia = new Asistencia();
         listaRetraso = new Retraso();
-        listaInvitados = new ArrayList<>();
+        listaAusencias = new ArrayList<Empleados>();
+        listaInvitados = new ArrayList<Empleados>();
     }
 
     public Date getFecha() {
@@ -69,6 +71,11 @@ public abstract class Reunion {
 
     }
 
+    public ArrayList<Empleados> obtenerAusencias() {
+        return listaAusencias;
+
+    }
+
     public Retraso obtenerRetraso() {
         return listaRetraso;
 
@@ -102,6 +109,23 @@ public abstract class Reunion {
 
     public void iniciar(Instant hora) {
         this.setHoraInicio(hora);
+        for (int i = 0; i < listaInvitados.size(); i++) {
+            boolean ver = true;
+            for (int j = 0; j < listaAsistencia.cantidad(); j++) {
+                if (listaInvitados.get(i) == listaAsistencia.obtener(j)) {
+                    ver = false;
+                    break;
+
+                }
+
+                if (ver) {
+                    listaAusencias.add(listaInvitados.get(i));
+
+                }
+
+            }
+
+        }
 
     }
 
