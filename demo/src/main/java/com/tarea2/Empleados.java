@@ -73,7 +73,7 @@ public class Empleados implements Invitable{
 
         } else {
             r.agregarAsistencia(this);
-            r.agregarRetraso(this);
+            r.agregarRetraso(this, hora);
 
         }
 
