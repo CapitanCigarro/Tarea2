@@ -6,12 +6,6 @@ import com.tarea2.Asistencia;
 import com.tarea2.Empleados;
 
 public class AsistenciaTest {
-    
-    @Test
-    public void testAsistencia(){
-        Asistencia temp = new Asistencia();
-        assertEquals(temp, temp);
-    }
 
     @Test
     public void testAñadirEmpleado(){
